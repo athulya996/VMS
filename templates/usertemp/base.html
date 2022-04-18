@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'user_home.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+ <div class="row">
+     <div class="col-12 grid-margin">
+         <div class="card">
+             <div class="card-body">
+                 <div class="row">
+                     <div class="col-sm-12">
+                     </div>
+                 </div>
+             </div>
+             <div class="col-lg-9 col-sm-8 grid-margin  grid-margin-lg-0">
+                 <div class="pl-0 pl-lg-4 ">
+                     <div class="d-xl-flex justify-content-between align-items-center mb-2">
+                     </div>
+                     <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
+                     <canvas id="device-sales"></canvas>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+</body>
+{% endblock %}

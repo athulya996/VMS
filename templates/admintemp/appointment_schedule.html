@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends 'admin_home.html' %}
+{% load static %}
+{% block content %}
+    <title>View appointment</title>
+<div class="row">
+      <div class="col-12 grid-margin">
+          <div class="card">
+              <div class="card-body">
+                  <center><h2>Appointment Shedule</h2></center>
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="table-responsive">
+                              <table class="table table-striped">
+                              <thead>
+                              <tr>
+                                  <th scope="col">SI No</th>
+                                  <th scope="col">User</th>
+                                  <th scope="col">Date</th>
+                                  <th scope="col">Hospital</th>
+                                  <th scope="col">Start_Time</th>
+                                  <th scope="col">End_Time</th>
+                                  <th scope="col">Status</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in appoin %}
+                              <tr>
+                                  <td>{{ forloop.counter }}</td>
+                                  <td>{{i.user.name}}</td>
+                                  <td>{{i.schedule.date}}</td>
+                                  <td>{{i.schedule.hospital}}</td>
+                                  <td>{{i.schedule.start_time}}</td>
+                                  <td>{{i.schedule.end_time}}</td>
+                                  <td>
+                                      {% if i.status == 0 %}
+                                      <a href="{% url 'approve_appoint' i.id %}">
+                                      <button type="submit" class="btn btn-success" >Approve</button></a>
+                                      <a href="{% url 'reject_appoint' i.id %}">
+                                      <button type="submit" class="btn btn-danger" >Reject</button></a>
+                                      {% elif i.status == 1 %}
+                                      <button type="button" class="btn btn-success" >Approved</button>
+                                      {% else %}
+                                      <button type="button" class="btn btn-danger" >Rejected</button>
+                                      {% endif %}
+                                  </td>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

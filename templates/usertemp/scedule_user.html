@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'usertemp/reg_form.html' %}
+{% load static %}
+{% block content %}
+ <div class="row">
+      <div class="col-12 grid-margin">
+          <div class="card">
+                  <center><h2>Vacination Schedule</h2></center>
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <form method="get" style="float:right" class="form-inline ">
+                              <div class="md-form my-0">
+                                  {{scheduleFilter.form }}
+                                  <button class="btn btn-primary" type="submit">Search</button>
+                              </div>
+                          </form>
+                          <div class="card-body">
+                              <table class="table table-striped">
+                                  <thead>
+                                  <tr>
+                                      <th scope="col">SI No</th>
+                                      <th scope="col">Hospital</th>
+                                      <th scope="col">Date</th>
+                                      <th scope="col">Start_Time</th>
+                                      <th scope="col">End_Time</th>
+                                      <th scope="col">Take_Appointment</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  {% for i in schedule %}
+                                  <tr>
+                                      <td>{{ forloop.counter }}</td>
+                                      <td>{{i.hospital}}</td>
+                                      <td>{{i.date}}</td>
+                                      <td>{{i.start_time}}</td>
+                                      <td>{{i.end_time}}</td>
+                                      <td>
+                                          <a href="{% url 'take_appointment' i.id %}">
+                                              <button type="button" class="btn btn-primary">Book Appointment</button></a>
+                                      </td>
+                                  </tr>
+                                  {% endfor %}
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}

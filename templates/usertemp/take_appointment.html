@@ -1,0 +1,43 @@
+{% extends 'usertemp/reg_form.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class="col-lg-8 col-ml-8">
+    <div class="row">
+        <!-- basic form start -->
+        <div class="col-12 mt-5">
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Book Appointment</h4><br><br>
+                    <form method="post">{% csrf_token %}
+                        <div class="form-group">
+                            <label class="form-control-label">Date</label>
+                            <input class="form-control" readonly value="{{schedule.date}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Hospital</label>
+                            <input required class="form-control" readonly value="{{schedule.hospital}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Start_Time</label>
+                            <input  required class="form-control" readonly value="{{schedule.start_time}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">End_Time</label>
+                            <input required class="form-control" readonly value="{{schedule.end_time}}">
+                        </div>
+                        <div class="form-actions form-group">
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

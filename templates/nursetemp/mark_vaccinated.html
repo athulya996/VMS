@@ -1,0 +1,28 @@
+{% extends 'nursetemp/nurse_home.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+ <div class="col-xl-8 col-md-12">
+     {% for message in messages %}
+     <div class="alert alert-info" role="alert">
+         <strong>{{message}}</strong>
+     </div>
+     {% endfor %}
+     <div class="card">
+         <div class="card-header">
+             <h5>User Update</h5>
+             <form method="POST">{% csrf_token %}
+                 <div class="form-group">
+                   <select name="vaccine" class="form-control-lg form-control">
+                     <option>Select Vaccine</option>
+                     {% for v in vaccine %}
+                     <option value="{{v.id}}">{{v.vaccine_name}}</option>
+                     {% endfor %}
+                   </select>
+                 </div>
+                 <button type="submit" class="btn btn primary">SUBMIT</button>
+             </form>
+         </div>
+     </div>
+ </div>
+
+{% endblock %}

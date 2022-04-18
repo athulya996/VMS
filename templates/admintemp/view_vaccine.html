@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'admin_home.html' %}
+{% load static %}
+{% block content %}
+<title xmlns="http://www.w3.org/1999/html">View User</title>
+<div class="row">
+      <div class="col-12 grid-margin">
+          <div class="card">
+              <div class="card-body">
+                  <center><h2>View Vaccine</h2></center>
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="table-responsive">
+                              <table class="table table-striped">
+                              <thead>
+                              <tr>
+                                  <th scope="col">SI No</th>
+                                  <th scope="col">Vaccine_Name</th>
+                                  <th scope="col">Vaccine_Type</th>
+                                  <th scope="col">Description</th>
+                                  <th scope="col">Update</th>
+                                  <th scope="col">Delete</th>
+
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {% for n in vaccine %}
+                              <tr>
+                                  <td>{{ forloop.counter }}</td>
+                                  <td>{{n.vaccine_name}}</td>
+                                  <td>{{n.vaccine_type}}</td>
+                                  <td>{{n.description}}</td>
+                                  <td><a href="{% url 'update_vaccine' n.id %}">
+                                      <button type="submit" class="btn btn-primary">UPDATE</button></a>
+                                  </td>
+                                  <td>
+                                      <form action="{% url 'delete_vaccine' n.id %}" method='POST'
+                                            style="display:inline;" onsubmit=" ">
+                                          {% csrf_token %}
+                                          <input type="hidden" name="group" value="{{ n.id }}">
+                                          <button type="submit" class="btn btn-dark" >DELETE</button>
+                                      </form>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

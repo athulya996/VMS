@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% extends 'nursetemp/nurse_home.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Appointment</h4>
+                <p class="card-description">ADD APPOINTMENT</p>
+                <form class="forms-sample" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        {{ form.hospital|as_crispy_field }}
+<!--                        <label for="exampleInputUsername1">Hospital</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">-->
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="exampleInputConfirmPassword1">Vaccine_Name</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="date" placeholder="">-->
+<!--                    </div>-->
+                    <div class="form-group">
+                        <label for="exampleInputConfirmPassword">Date</label>
+                        <input type="date" class="form-control" id="exampleInputConfirmPassword" name="date" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Start_Time</label>
+                        <input type="time" class="form-control" id="exampleInputPassword1" name="start_time" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputConfirmPassword2">End_Time</label>
+                        <input type="time" class="form-control" id="exampleInputConfirmPassword2" name="end_time" placeholder="">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

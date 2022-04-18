@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'nursetemp/nurse_home.html' %}
+{% load static %}
+{% block content %}
+ <div class="row">
+      <div class="col-12 grid-margin">
+          <div class="card">
+              <div class="card-body">
+                  <center><h2>APPOINTMENT STATUS</h2></center>
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="table-responsive">
+                              <table class="table table-striped">
+                                  <thead>
+                                  <tr>
+                                      <th scope="col">SI No</th>
+                                      <th scope="col">User_Name</th>
+                                      <th scope="col">Child_Name</th>
+                                      <th scope="col">Child_Age</th>
+                                      <th scope="col">Vaccine_Name</th>
+                                      <th scope="col">Hospital</th>
+                                      <th scope="col">Date</th>
+                                      <th scope="col">Start_Time</th>
+                                      <th scope="col">End_Time</th>
+                                      <th scope="col">Status</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  {% for i in appoint %}
+                                  <tr>
+                                      <td>{{ forloop.counter }}</td>
+                                      <td>{{i.user.name}}</td>
+                                      <td>{{i.user.child_name}}</td>
+                                      <td>{{i.user.child_age}}</td>
+                                      <td>{{i.vaccine_name.vaccine_name}}</td>
+                                      <td>{{i.schedule.hospital}}</td>
+                                      <td>{{i.schedule.date}}</td>
+                                      <td>{{i.schedule.start_time}}</td>
+                                      <td>{{i.schedule.end_time}}</td>
+                                      <td>
+                                          {% if i.vaccinated == False %}
+                                          <a href="{% url 'mark_vaccinated' i.id %}">
+                                          <button type="submit" class="btn btn-warning" >Vaccine Pending</button></a>
+                                          {% elif i.vaccinated == True %}
+<!--                                          <a href="{% url 'reject_appoint' i.id %}"></a>-->
+                                          <button type="submit" class="btn btn-primary" >Vaccinated</button>
+                                          {% endif %}
+                                      </td>
+                                  </tr>
+                                  {% endfor %}
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'admin_home.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Vaccine</h4>
+                <p class="card-description">ADD VACCINE</p>
+                <form class="forms-sample" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Vaccine_Name</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" name="vaccine_name" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPlace">Vaccine_Type</label>
+                        <input type="text" class="form-control" id="exampleInputPlace" name="vaccine_type" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="description" placeholder="">
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="exampleInputConfirmPassword1">Email</label>-->
+<!--                        <input type="email" class="form-control" id="exampleInputConfirmPassword1" name="email" placeholder="">-->
+<!--                    </div>-->
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
